@@ -9,11 +9,9 @@ module Api
     def create
       user = User.new user_params
       if user.save
-        render json: {message: "Registration has been completed",user: user}, status: 200
+        render json: {message: "Registration has been completed", user: user, status: 200}
       else
         warden.custom_failure!
-
-        byebug
         render json: {message: user.errors.messages}, status: 200
       end
     end
